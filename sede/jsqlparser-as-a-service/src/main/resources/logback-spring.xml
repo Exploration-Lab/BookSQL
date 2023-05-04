@@ -1,0 +1,32 @@
+<configuration>
+    <springProfile name="production">
+        <appender name="CLOUD" class="com.google.cloud.logging.logback.LoggingAppender">
+            <!-- Optional : filter logs at or above a level -->
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>INFO</level>
+            </filter>
+            <log>application.log</log> <!-- Optional : default java.log -->
+            <flushLevel>INFO</flushLevel> <!-- Optional : default ERROR -->
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="CLOUD"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!production">
+
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+
+</configuration>
+

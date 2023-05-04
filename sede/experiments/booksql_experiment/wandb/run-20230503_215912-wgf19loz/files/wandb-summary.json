@@ -1,0 +1,1 @@
+{"train/loss": 0.0, "epoch": 1, "validation/BLEU": 0.0, "validation/partial_match_f1": 0.0, "validation/partial_match_em": 0.0, "validation/parsable_queries_accuracy": 0.0, "validation/loss": 0.0, "_runtime": 2374, "_timestamp": 1683142727, "_step": 0}

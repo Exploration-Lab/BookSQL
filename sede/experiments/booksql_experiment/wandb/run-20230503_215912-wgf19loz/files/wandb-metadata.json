@@ -1,0 +1,31 @@
+{
+    "os": "Linux-5.15.0-43-generic-x86_64-with-debian-bullseye-sid",
+    "python": "3.7.16",
+    "heartbeatAt": "2023-05-03T18:59:14.690584",
+    "startedAt": "2023-05-03T18:59:12.895719",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 4,
+    "cpu_count": 40,
+    "cuda": null,
+    "args": [
+        "train",
+        "configs/t5_text2sql_booksql.jsonnet",
+        "-s",
+        "experiments/booksql_experiment",
+        "--include-package",
+        "src"
+    ],
+    "state": "running",
+    "program": "main_allennlp.py",
+    "codePath": "main_allennlp.py",
+    "git": {
+        "remote": "https://github.com/hirupert/sede.git",
+        "commit": "2bf261248feb330889a9e84f74e33ff7df0d6a86"
+    },
+    "email": null,
+    "root": "/workspace/DATA1/rahul/text2SQL/github/sede",
+    "host": "exploration-lab-server-3090",
+    "username": "root",
+    "executable": "/workspace/DATA1/rahul/ananconda3/envs/sede_env/bin/python"
+}

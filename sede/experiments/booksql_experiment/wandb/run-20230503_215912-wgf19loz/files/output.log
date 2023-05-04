@@ -1,0 +1,87 @@
+2023-05-03 21:59:18,672 - WARNING - allennlp.training.trainer - You provided a validation dataset but patience was set to None, meaning that early stopping is disabled
+2023-05-03 21:59:19,007 - INFO - allennlp.training.trainer - Beginning training.
+2023-05-03 21:59:19,007 - INFO - allennlp.training.trainer - Epoch 0/1
+2023-05-03 21:59:19,007 - INFO - allennlp.training.trainer - Worker 0 memory usage: 5.0G
+2023-05-03 21:59:19,009 - INFO - allennlp.training.trainer - GPU 0 memory usage: 850M
+2023-05-03 21:59:19,012 - INFO - allennlp.training.trainer - Training
+2023-05-03 21:59:19,013 - INFO - src.datasetreaders.text2sql - truncate_long_sequences=False
+loading instances: 0it [02:30, ?it/s]
+0it [00:00, ?it/s]
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:01:49,432 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+
+0it [02:30, ?it/s] 0it [00:00, ?it/s]
+2023-05-03 22:04:19,848 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:04:22,319 - INFO - allennlp.training.trainer - Validating
+loading instances: 0it [02:28, ?it/s]
+0it [00:00, ?it/s]
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:06:50,832 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+0it [02:30, ?it/s] 0it [00:00, ?it/s]
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:09:21,296 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+2023-05-03 22:09:21,309 - INFO - allennlp.training.checkpointer - Best validation performance so far. Copying weights to 'experiments/booksql_experiment/best.th'.
+2023-05-03 22:09:22,620 - INFO - allennlp.training.callbacks.console_logger -                               Training |  Validation
+2023-05-03 22:09:22,620 - INFO - allennlp.training.callbacks.console_logger - BLEU                      |       N/A  |     0.000
+2023-05-03 22:09:22,620 - INFO - allennlp.training.callbacks.console_logger - gpu_0_memory_MB           |   850.310  |       N/A
+2023-05-03 22:09:22,620 - INFO - allennlp.training.callbacks.console_logger - loss                      |     0.000  |     0.000
+2023-05-03 22:09:22,621 - INFO - allennlp.training.callbacks.console_logger - parsable_queries_accuracy |       N/A  |     0.000
+2023-05-03 22:09:22,621 - INFO - allennlp.training.callbacks.console_logger - partial_match_em          |       N/A  |     0.000
+2023-05-03 22:09:22,621 - INFO - allennlp.training.callbacks.console_logger - partial_match_f1          |       N/A  |     0.000
+2023-05-03 22:09:22,621 - INFO - allennlp.training.callbacks.console_logger - worker_0_memory_MB        |  5167.984  |       N/A
+2023-05-03 22:09:22,621 - INFO - allennlp.training.trainer - Epoch duration: 0:10:03.613688
+2023-05-03 22:09:22,621 - INFO - allennlp.training.trainer - Estimated training time remaining: 0:10:03
+2023-05-03 22:09:22,621 - INFO - allennlp.training.trainer - Epoch 1/1
+2023-05-03 22:09:22,622 - INFO - allennlp.training.trainer - Worker 0 memory usage: 5.0G
+2023-05-03 22:09:22,622 - INFO - allennlp.training.trainer - GPU 0 memory usage: 850M
+2023-05-03 22:09:22,624 - INFO - allennlp.training.trainer - Training
+loading instances: 0it [02:30, ?it/s]
+0it [00:00, ?it/s]
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:11:53,080 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+
+0it [02:30, ?it/s] 0it [00:00, ?it/s]
+2023-05-03 22:14:23,564 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:14:25,538 - INFO - allennlp.training.trainer - Validating
+loading instances: 0it [02:30, ?it/s]
+0it [00:00, ?it/s]
+loading instances: 0it [00:00, ?it/s]
+2023-05-03 22:16:55,988 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+
+0it [02:30, ?it/s] 0it [00:00, ?it/s]
+2023-05-03 22:19:26,429 - INFO - src.datasetreaders.text2sql - In 50 instances, the SQL query was invalid after SQL parsing and skipped.
+2023-05-03 22:19:26,658 - INFO - allennlp.training.callbacks.console_logger -                               Training |  Validation
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - BLEU                      |       N/A  |     0.000
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - gpu_0_memory_MB           |   850.310  |       N/A
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - loss                      |     0.000  |     0.000
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - parsable_queries_accuracy |       N/A  |     0.000
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - partial_match_em          |       N/A  |     0.000
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - partial_match_f1          |       N/A  |     0.000
+2023-05-03 22:19:26,659 - INFO - allennlp.training.callbacks.console_logger - worker_0_memory_MB        |  5167.984  |       N/A
+2023-05-03 22:19:26,659 - INFO - allennlp.training.trainer - Epoch duration: 0:10:04.037586
+2023-05-03 22:19:26,659 - INFO - allennlp.training.checkpointer - loading best weights
+2023-05-03 22:19:27,889 - INFO - allennlp.common.util - Metrics: {
+  "best_epoch": 0,
+  "peak_worker_0_memory_MB": 5167.984375,
+  "peak_gpu_0_memory_MB": 850.3095703125,
+  "training_duration": "0:20:07.424103",
+  "training_start_epoch": 0,
+  "training_epochs": 1,
+  "epoch": 1,
+  "training_loss": 0.0,
+  "training_worker_0_memory_MB": 5167.984375,
+  "training_gpu_0_memory_MB": 850.3095703125,
+  "validation_BLEU": 0.0,
+  "validation_partial_match_f1": 0.0,
+  "validation_partial_match_em": 0.0,
+  "validation_parsable_queries_accuracy": 0.0,
+  "validation_loss": 0.0,
+  "best_validation_BLEU": 0.0,
+  "best_validation_partial_match_f1": 0.0,
+  "best_validation_partial_match_em": 0.0,
+  "best_validation_parsable_queries_accuracy": 0.0,
+  "best_validation_loss": 0.0
+}
+2023-05-03 22:19:27,889 - INFO - allennlp.models.archival - archiving weights and vocabulary to experiments/booksql_experiment/model.tar.gz
