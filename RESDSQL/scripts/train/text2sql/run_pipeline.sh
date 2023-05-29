@@ -3,14 +3,14 @@ set -e
 fold_id=0
 
 #Sample
-data_folder_name=sample
-batch_size=1
-epochs=2
+# data_folder_name=sample
+# batch_size=1
+# epochs=2
 
 # #Original
-# data_folder_name=fold$fold_id
-# batch_size=16
-# epochs=128
+data_folder_name=fold$fold_id
+batch_size=16
+epochs=128
 
 echo "preprocess train_booksql dataset for Cross Encoder"
 python preprocessing.py \
