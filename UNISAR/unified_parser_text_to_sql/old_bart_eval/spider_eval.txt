@@ -1,0 +1,1750 @@
+False
+0
+db: accounting
+what is my max bill for robertson ?
+gold: select max ( master_txn_table@credit ) from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@vendor = ' robertson '
+pred: select max ( employees@billing_rate ) from master_txn_table join customers on customers@customer_name = master_txn_table@customer join employees on master_txn_table@businessid = employees@businessid where customers@customer_name = 'value'
+
+False
+1
+db: accounting
+show number of transactions with sonnenschein family store
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+2
+db: accounting
+who are my outstanding debtors or creditors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@customer , master_txn_table@debit from master_txn_table group by master_txn_table@customer order by sum ( master_txn_table@debit ) desc limit 1
+
+False
+3
+db: accounting
+this fiscal year , what are my ar ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@ar_paid = 'value'
+
+False
+4
+db: accounting
+what are my ar last quarter ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last quarter '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@createddate like 'value'
+
+False
+5
+db: accounting
+this fiscal year to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+pred: select master_txn_table@transaction_date , master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+6
+db: accounting
+how many mastercard transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+7
+db: accounting
+this year , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+8
+db: accounting
+who are my outstanding creditors ?
+gold: select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@debit from master_txn_table group by master_txn_table@debit order by count ( * ) desc limit 1
+
+False
+9
+db: accounting
+display all of sonnenschein family store 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+10
+db: accounting
+how many visa transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+11
+db: accounting
+display all of geeta kalapatapu 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+12
+db: accounting
+how much money does customer paulsen medical supplies still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' paulsen medical supplies '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service_type = 'value'
+
+False
+13
+db: accounting
+display the total number of transactions with gevelber photography
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' gevelber photography '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+True
+14
+db: accounting
+what is the balance owed by kate whelan ?
+gold: select customers@balance from customers where customers@customer_name = ' kate whelan '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+15
+db: accounting
+show number of transactions with freeman sporting good
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' freeman sporting good '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+16
+db: accounting
+total sales for each product
+gold: select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+pred: select count ( * ) , products@businessid from products group by products@businessid
+
+False
+17
+db: accounting
+what are my ar today ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' today '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+18
+db: accounting
+total sales for each product
+gold: select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+pred: select count ( * ) , products@businessid from products group by products@businessid
+
+False
+19
+db: accounting
+what was the most recent invoice for rock fountain ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' rock fountain ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and products@product_service = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+20
+db: accounting
+this quarter to date , what are my ar ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@ar_paid , min ( master_txn_table@ar_paid ) from master_txn_table group by master_txn_table@ar_paid
+
+False
+21
+db: accounting
+what 's the total number of invoices we 've issued paulsen medical supplies ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supplies ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join chart_of_accounts on chart_of_accounts@account_name = master_txn_table@account join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and chart_of_accounts@account_name = 'value'
+
+False
+22
+db: accounting
+what is the balance owed by paulsen medical supplies ?
+gold: select customers@balance from customers where customers@customer_name = ' paulsen medical supplies '
+pred: select vendors@balance from master_txn_table join customers on customers@customer_name = master_txn_table@customer join vendors on master_txn_table@vendor = vendors@vendor_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+23
+db: accounting
+in the this week , how many lighting did barnett design sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' lighting ' and master_txn_table@transaction_date in ' this week '
+pred: select count ( * ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and products@product_service = 'value'
+
+False
+24
+db: accounting
+when was the last time sonnenschein family store paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' sonnenschein family store ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@ar_paid ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@customer = 'value'
+
+False
+25
+db: accounting
+what are my ap this fiscal year to date ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+26
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+27
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+28
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+29
+db: accounting
+what is my last invoice from rondonuwu fruit and vegi ?
+gold: select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@debit from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value' and master_txn_table@transaction_type = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+30
+db: accounting
+what are my account receivable this fiscal year ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+pred: select * from chart_of_accounts where chart_of_accounts@account_name = 'value'
+
+False
+31
+db: accounting
+how many pest control did rago travel agency sell this month ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' pest control ' and master_txn_table@transaction_date in ' this month '
+pred: select count ( * ) from master_txn_table join chart_of_accounts on master_txn_table@account = chart_of_accounts@account_name join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and products@product_service = 'value' and chart_of_accounts@account_name = 'value'
+
+False
+32
+db: accounting
+in the last 30 days , how many sprinkler head did rago travel agency sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' sprinkler head ' and master_txn_table@transaction_date in ' last 30 days '
+pred: select count ( * ) from master_txn_table join chart_of_accounts on chart_of_accounts@account_name = master_txn_table@account join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and chart_of_accounts@account_name = 'value'
+
+False
+33
+db: accounting
+what are my ap this quarter to date ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@ap_paid from master_txn_table order by master_txn_table@ap_paid desc limit 1
+
+False
+34
+db: accounting
+who are my outstanding debtors or creditors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@customer , master_txn_table@debit from master_txn_table group by master_txn_table@customer order by sum ( master_txn_table@debit ) desc limit 1
+
+False
+35
+db: accounting
+what is the balance due from rondonuwu fruit and vegi ?
+gold: select customers@balance from customers where customers@customer_name = ' rondonuwu fruit and vegi '
+pred: select customers@balance from customers where customers@customer_name = 'value' and customers@customer_name = 'value' intersect select customers@balance from customers join master_txn_table on customers@id = master_txn_table@businessid where customers@customer_name = 'value' and customers@customer_name = 'value'
+
+False
+36
+db: accounting
+what are my ap this fiscal year to date ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+37
+db: accounting
+when did rondonuwu fruit and vegi last pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from customers join master_txn_table on customers@businessid = master_txn_table@businessid where customers@customer_name = 'value' and customers@customer_full_name = 'value' intersect select master_txn_table@createddate from customers join master_txn_table on customers@businessid = master_txn_table@businessid where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+38
+db: accounting
+what was the most recent invoice for gardening ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' gardening ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value' order by master_txn_table@duedate desc limit 1
+
+True
+39
+db: accounting
+what is the balance owed by dylan sollfrank ?
+gold: select customers@balance from customers where customers@customer_name = ' dylan sollfrank '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+40
+db: accounting
+how many invoices have we sent to rondonuwu fruit and vegi ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+41
+db: accounting
+who are my outstanding debtors or creditors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@customer , master_txn_table@debit from master_txn_table group by master_txn_table@customer order by sum ( master_txn_table@debit ) desc limit 1
+
+False
+42
+db: accounting
+show all transactions with 55 twin lane
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane '
+pred: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = 'value' group by master_txn_table@transaction_id having count ( * ) >= 'value'
+
+False
+43
+db: accounting
+when was the first time weiskopf consulting paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' weiskopf consulting ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+44
+db: accounting
+last 7 days , what are my account receivable ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+pred: select master_txn_table@account , master_txn_table@transaction_date from master_txn_table order by master_txn_table@transaction_date asc limit 'value'
+
+False
+45
+db: accounting
+this quarter to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@transaction_date , count ( * ) from master_txn_table group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+46
+db: accounting
+what 's the total number of invoices we 've issued to dukes basketball camp ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dukes basketball camp ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@account = 'value'
+
+False
+47
+db: accounting
+how much money does rondonuwu fruit and vegi still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' rondonuwu fruit and vegi '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_name = 'value'
+
+False
+48
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+49
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+50
+db: accounting
+display all of mark cho 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' mark cho '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+51
+db: accounting
+when was video game by dan first payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' video game by dan ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = 'value' order by master_txn_table@ar_paid desc limit 1
+
+False
+52
+db: accounting
+show all of shara barnett 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' shara barnett '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+53
+db: accounting
+when was red rock diner first payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' red rock diner ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@account = 'value' order by master_txn_table@createddate
+
+False
+54
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+55
+db: accounting
+what are my ar this year to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select master_txn_table@ar_paid from master_txn_table order by master_txn_table@ar_paid desc limit 1
+
+False
+56
+db: accounting
+what are my account receivable this week to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+pred: select master_txn_table@transaction_date , count ( * ) from master_txn_table group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+57
+db: accounting
+what are my ap last quarter ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last quarter '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ap_paid desc limit 1
+
+False
+58
+db: accounting
+what was the most recent invoice for 0969 ocean view road ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table where master_txn_table@customer = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+59
+db: accounting
+how many visa transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+60
+db: accounting
+total sales for each product
+gold: select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+pred: select count ( * ) , products@businessid from products group by products@businessid
+
+False
+61
+db: accounting
+when was 55 twin lane first payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 55 twin lane ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table where master_txn_table@transaction_type = 'value' and master_txn_table@ar_paid = 'value' order by master_txn_table@ar_paid desc limit 1
+
+False
+62
+db: accounting
+show all of paulsen medical supply 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' paulsen medical supply '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+63
+db: accounting
+when was kate whelan last payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' order by master_txn_table@createddate desc limit 1
+
+False
+64
+db: accounting
+what are my account receivable this year to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+65
+db: accounting
+display all transactions involving kookies by kathy
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' kookies by kathy '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+66
+db: accounting
+what are my account receivable this fiscal year to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+67
+db: accounting
+this week to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week to date '
+pred: select master_txn_table@createddate , master_txn_table@transaction_date from master_txn_table order by master_txn_table@duedate desc limit 1
+
+False
+68
+db: accounting
+have we billed travis waldron for the sprinkler pipe last month ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' travis waldron ' and master_txn_table@product_service = ' sprinkler pipe '
+pred: select master_txn_table@account from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and master_txn_table@transaction_date = ( select max ( master_txn_table@transaction_date ) from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' )
+
+False
+69
+db: accounting
+this week , what are my account payable ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week '
+pred: select master_txn_table@account from master_txn_table order by master_txn_table@ar_paid desc limit 1
+
+False
+70
+db: accounting
+what are my account receivable last year ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last year '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@createddate desc limit 1
+
+False
+71
+db: accounting
+what are my account payable this quarter ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@ar_paid = 'value'
+
+False
+72
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+73
+db: accounting
+how many mastercard transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+74
+db: accounting
+show number of transactions with rago travel agency
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rago travel agency '
+pred: select count ( * ) from master_txn_table join chart_of_accounts on master_txn_table@account = chart_of_accounts@account_name where chart_of_accounts@account_name = 'value'
+
+False
+75
+db: accounting
+what is the balance owed by sonnenschein family store ?
+gold: select customers@balance from customers where customers@customer_name = ' sonnenschein family store '
+pred: select vendors@balance from master_txn_table join customers on customers@customer_name = master_txn_table@customer join vendors on master_txn_table@vendor = vendors@vendor_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+76
+db: accounting
+how much credit does customer diego rodriguez have year to date ?
+gold: select customers@balance from customers where customers@customer_name = ' diego rodriguez '
+pred: select master_txn_table@credit from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' order by master_txn_table@credit desc limit 1
+
+False
+77
+db: accounting
+what are my ar this week ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week '
+pred: select master_txn_table@ar_paid from master_txn_table order by master_txn_table@ar_paid asc limit 1
+
+False
+78
+db: accounting
+display the total number of transactions with diego rodriguez
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+79
+db: accounting
+this fiscal year , what are my account receivable ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+pred: select count ( * ) , chart_of_accounts@account_name from chart_of_accounts where chart_of_accounts@account_type = 'value' group by chart_of_accounts@account_name
+
+False
+80
+db: accounting
+when was the last time gevelber photography paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' gevelber photography ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+81
+db: accounting
+show all of sonnenschein family store 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+82
+db: accounting
+what are my account receivable last 7 days ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+pred: select chart_of_accounts@account_name from chart_of_accounts where chart_of_accounts@account_name = 'value' order by chart_of_accounts@account_name desc limit 'value'
+
+False
+83
+db: accounting
+display all transactions involving diego rodriguez
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+84
+db: accounting
+how many invoices have we sent to video games by dan ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' video games by dan ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service_type = 'value'
+
+False
+85
+db: accounting
+when did paulsen medical supply first pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' paulsen medical supply ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_name = 'value'
+
+False
+86
+db: accounting
+display all of shara barnett 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' shara barnett '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+87
+db: accounting
+what are my account payable last 12 months ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 12 months '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@duedate >= 'value'
+
+False
+88
+db: accounting
+what are my account payable last year ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ar_paid desc limit 1
+
+False
+89
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+90
+db: accounting
+how many invoices have we sent to john melton ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+91
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+92
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+93
+db: accounting
+display the total number of transactions with sushi by katsuyuki
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+94
+db: accounting
+this year to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select master_txn_table@transaction_date , master_txn_table@ap_paid from master_txn_table group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+95
+db: accounting
+how much money does mark cho still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' mark cho '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+96
+db: accounting
+how much money does weiskopf consulting still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' weiskopf consulting '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+97
+db: accounting
+how much credit does customer sonnenschein family store have year to date ?
+gold: select customers@balance from customers where customers@customer_name = ' sonnenschein family store '
+pred: select master_txn_table@credit from customers join master_txn_table on customers@businessid = master_txn_table@businessid where customers@customer_name = 'value' and master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' )
+
+False
+98
+db: accounting
+display all transactions involving freeman sporting goods
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' freeman sporting goods '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@businessid = 'value'
+
+False
+99
+db: accounting
+in the last fiscal year , how many design did 55 twin lane sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@product_service = ' design ' and master_txn_table@transaction_date in ' last fiscal year '
+pred: select count ( * ) from products where products@businessid = 'value' and products@product_service = 'value' order by products@product_service desc limit 1
+
+False
+100
+db: accounting
+show how many transactions you 've had with kookies by kathy
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kookies by kathy '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+101
+db: accounting
+who are my outstanding creditors ?
+gold: select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@debit from master_txn_table group by master_txn_table@debit order by count ( * ) desc limit 1
+
+False
+102
+db: accounting
+what are my ap last month ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ap_paid desc limit 1
+
+False
+103
+db: accounting
+what was the most recent invoice for sonnenschein family store ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' sonnenschein family store ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@account from master_txn_table join customers on master_txn_table@businessid = customers@businessid where customers@customer_name = 'value' and master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' )
+
+False
+104
+db: accounting
+what 's the total number of invoices we 've issued to mark cho ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+105
+db: accounting
+what are my ap last fiscal year ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last fiscal year '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table where master_txn_table@businessid = 'value' ) order by master_txn_table@ap_paid desc limit 1
+
+False
+106
+db: accounting
+show how many transactions you 've had with 0969 ocean view road
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@billing_city = 'value'
+
+False
+107
+db: accounting
+who has the most money outstanding ?
+gold: select customers@customer_name from customers order by customers@balance desc limit 1
+pred: select customers@customer_name from master_txn_table join customers on master_txn_table@customer = customers@customer_name group by customers@customer_name order by sum ( master_txn_table@amount ) desc limit 1
+
+False
+108
+db: accounting
+what are my account receivable last quarter ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last quarter '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+109
+db: accounting
+when was video games by dan first payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' video games by dan ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@transaction_date from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service_type = 'value' order by master_txn_table@ar_paid
+
+False
+110
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+111
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+112
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+113
+db: accounting
+what was the most recent invoice for pump ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' pump ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table where master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table where master_txn_table@transaction_type = 'value' )
+
+False
+114
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+115
+db: accounting
+when was diego rodriguez last payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' group by master_txn_table@createddate order by count ( * ) desc limit 1
+
+False
+116
+db: accounting
+have we billed john melton for the maintenance & repair last month ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' john melton ' and master_txn_table@product_service = ' maintenance & repair '
+pred: select master_txn_table@account from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and master_txn_table@transaction_date = 'value' union select master_txn_table@account from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+117
+db: accounting
+how much money does freeman sporting goods still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' freeman sporting goods '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@businessid = 'value'
+
+False
+118
+db: accounting
+what is the balance owed by paulsen medical supplies ?
+gold: select customers@balance from customers where customers@customer_name = ' paulsen medical supplies '
+pred: select vendors@balance from master_txn_table join customers on customers@customer_name = master_txn_table@customer join vendors on master_txn_table@vendor = vendors@vendor_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+119
+db: accounting
+last 30 days , what are my ar ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 30 days '
+pred: select master_txn_table@ar_paid from master_txn_table order by master_txn_table@ar_paid asc limit 'value'
+
+False
+120
+db: accounting
+what are my account receivable yesterday ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' yesterday '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+121
+db: accounting
+how many visa transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+122
+db: accounting
+what are my account receivable last 12 months ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 12 months '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+123
+db: accounting
+mark cho has received how many invoices ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+124
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+125
+db: accounting
+show all of travis waldron 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' travis waldron '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+126
+db: accounting
+what are my ap last year ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ap_paid desc limit 1
+
+False
+127
+db: accounting
+how much money does customer dukes basketball camp still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' dukes basketball camp '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+128
+db: accounting
+wedding planning by whitney has received how many invoices ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' wedding planning by whitney ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+True
+129
+db: accounting
+what is the balance owed by travis waldron ?
+gold: select customers@balance from customers where customers@customer_name = ' travis waldron '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+130
+db: accounting
+this month to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month to date '
+pred: select master_txn_table@duedate , master_txn_table@transaction_date from master_txn_table order by master_txn_table@duedate desc limit 1
+
+False
+131
+db: accounting
+show all of paulsen medical supplies 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' paulsen medical supplies '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' intersect select master_txn_table@transaction_id from master_txn_table join products on master_txn_table@product_service = products@businessid where products@product_service_type = 'value' and customers@customer_name = 'value'
+
+True
+132
+db: accounting
+what is the balance owed by mark cho ?
+gold: select customers@balance from customers where customers@customer_name = ' mark cho '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+133
+db: accounting
+show number of transactions with paulsen medical supply
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and customers@customer_name = 'value' and products@product_service_type = 'value'
+
+False
+134
+db: accounting
+in the last 12 months , how many sod did sushi by katsuyuki sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@product_service = ' sod ' and master_txn_table@transaction_date in ' last 12 months '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@customer = 'value'
+
+False
+135
+db: accounting
+how many mastercard transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+136
+db: accounting
+what 's the total number of invoices we 've issued 55 twin lane ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_type = 'value' and master_txn_table@customer = 'value'
+
+False
+137
+db: accounting
+what are my account payable this quarter ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@ar_paid = 'value'
+
+True
+138
+db: accounting
+what is the balance due from geeta kalapatapu ?
+gold: select customers@balance from customers where customers@customer_name = ' geeta kalapatapu '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+139
+db: accounting
+when did 55 twin lane last pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table where master_txn_table@customer = 'value' and master_txn_table@ap_paid = 'value'
+
+False
+140
+db: accounting
+what 's the total number of invoices we 've issued to barnett design ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and products@product_service_type = 'value'
+
+False
+141
+db: accounting
+have we billed freeman sporting good for the installation last month ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' freeman sporting good ' and master_txn_table@product_service = ' installation '
+pred: select master_txn_table@customer from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and master_txn_table@transaction_date = 'value' intersect select master_txn_table@customer from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and master_txn_table@transaction_date like 'value'
+
+False
+142
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+143
+db: accounting
+when was duke basketball camp last payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' duke basketball camp ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@duedate from master_txn_table where master_txn_table@account = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+144
+db: accounting
+what are my account receivable last 7 days ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+pred: select chart_of_accounts@account_name from chart_of_accounts where chart_of_accounts@account_name = 'value' order by chart_of_accounts@account_name desc limit 'value'
+
+False
+145
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+146
+db: accounting
+how much money does video games by dan still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' video games by dan '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service = 'value' and customers@customer_name = 'value'
+
+False
+147
+db: accounting
+how much credit does customer sushi by katsuyuki have year to date ?
+gold: select customers@balance from customers where customers@customer_name = ' sushi by katsuyuki '
+pred: select master_txn_table@credit from customers join master_txn_table on customers@businessid = master_txn_table@businessid where customers@customer_name = 'value' and master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' )
+
+False
+148
+db: accounting
+who has the most money outstanding ?
+gold: select customers@customer_name from customers order by customers@balance desc limit 1
+pred: select customers@customer_name from master_txn_table join customers on master_txn_table@customer = customers@customer_name group by customers@customer_name order by sum ( master_txn_table@amount ) desc limit 1
+
+False
+149
+db: accounting
+what are my account payable today ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' today '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+150
+db: accounting
+how many invoices have we sent to kookies by kathy ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kookies by kathy ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on customers@customer_name = master_txn_table@customer join employees on master_txn_table@businessid = employees@businessid where customers@customer_name = 'value' and employees@employee_name = 'value'
+
+False
+151
+db: accounting
+what is my last invoice from cool car ?
+gold: select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' cool car ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@debit from master_txn_table join master_txn_table on master_txn_table@businessid = master_txn_table@businessid where master_txn_table@transaction_type = 'value' and master_txn_table@createddate = ( select max ( master_txn_table@createddate ) from master_txn_table where master_txn_table@transaction_type = 'value' )
+
+False
+152
+db: accounting
+when did weiskopf consulting first pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' weiskopf consulting ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' order by master_txn_table@ar_paid asc
+
+False
+153
+db: accounting
+show number of transactions with 0969 ocean view road
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_id = 'value' and master_txn_table@customer = 'value'
+
+False
+154
+db: accounting
+in the this year , how many gardening did barnett design sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' gardening ' and master_txn_table@transaction_date in ' this year '
+pred: select count ( * ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@businessid = 'value' and products@product_service = 'value'
+
+False
+155
+db: accounting
+i need a list of equipment purchased for cigna health care
+gold: select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' cigna health care '
+pred: select products@product_service from master_txn_table join chart_of_accounts on master_txn_table@account = chart_of_accounts@account_name join products on master_txn_table@product_service = products@product_service where chart_of_accounts@account_name = 'value' and products@product_service_type = 'value'
+
+False
+156
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+157
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+158
+db: accounting
+what are my account payable last 7 days ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 7 days '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@ar_paid = 'value' and master_txn_table@duedate = 'value'
+
+False
+159
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+160
+db: accounting
+last year , what are my account payable ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+pred: select master_txn_table@account , master_txn_table@createddate from master_txn_table order by master_txn_table@createddate desc limit 1
+
+False
+161
+db: accounting
+how much money does customer sonnenschein family store still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' sonnenschein family store '
+pred: select sum ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@customer = 'value'
+
+False
+162
+db: accounting
+who are my outstanding debtors or creditors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@customer , master_txn_table@debit from master_txn_table group by master_txn_table@customer order by sum ( master_txn_table@debit ) desc limit 1
+
+False
+163
+db: accounting
+what are my ap this quarter ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@amount > 'value'
+
+False
+164
+db: accounting
+show all of rago travel agency 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' rago travel agency '
+pred: select * from master_txn_table join chart_of_accounts on master_txn_table@account = chart_of_accounts@account_name join customers on master_txn_table@customer = customers@customer_name where chart_of_accounts@account_name = 'value' and customers@customer_name = 'value'
+
+False
+165
+db: accounting
+who has the most money outstanding ?
+gold: select customers@customer_name from customers order by customers@balance desc limit 1
+pred: select customers@customer_name from master_txn_table join customers on master_txn_table@customer = customers@customer_name group by customers@customer_name order by sum ( master_txn_table@amount ) desc limit 1
+
+False
+166
+db: accounting
+what are my account receivable this month ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month '
+pred: select * from master_txn_table where master_txn_table@account = 'value'
+
+False
+167
+db: accounting
+how much money does 55 twin lane still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' 55 twin lane '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@billing_zip_code = 'value'
+
+False
+168
+db: accounting
+how many visa transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+169
+db: accounting
+display all of dylan sollfrank 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+170
+db: accounting
+yesterday , what are my account payable ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' yesterday '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate like 'value'
+
+False
+171
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+172
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+173
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+174
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+175
+db: accounting
+when was the last time freeman sporting good paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' freeman sporting good ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value'
+
+False
+176
+db: accounting
+what are my account payable yesterday ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' yesterday '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+177
+db: accounting
+what are my account receivable last 7 days ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+pred: select chart_of_accounts@account_name from chart_of_accounts where chart_of_accounts@account_name = 'value' order by chart_of_accounts@account_name desc limit 'value'
+
+False
+178
+db: accounting
+what was the most recent invoice for sprinkler heads ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' sprinkler heads ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table join products on master_txn_table@businessid = products@businessid where products@product_service = 'value' and master_txn_table@transaction_date = ( select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@businessid = products@businessid where products@product_service = 'value' )
+
+False
+179
+db: accounting
+what are my account receivable this quarter to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+180
+db: accounting
+diego rodriguez has received how many invoices ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+181
+db: accounting
+when was video games by dan last payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' video games by dan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@transaction_date from master_txn_table join products on master_txn_table@product_service = products@businessid where products@product_service_type = 'value' intersect select master_txn_table@transaction_date from master_txn_table join products on master_txn_table@product_service = products@businessid where products@product_service_type = 'value'
+
+False
+182
+db: accounting
+show all transactions with paulsen medical supply
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where products@product_service_type = 'value' and customers@customer_name = 'value'
+
+False
+183
+db: accounting
+what 's the total number of invoices we 've issued kate whelan ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+184
+db: accounting
+yesterday , what are my ar ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' yesterday '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+185
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+186
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+187
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+188
+db: accounting
+when did 0969 ocean view road first pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table where master_txn_table@customer = 'value' order by master_txn_table@ar_paid asc limit 1
+
+False
+189
+db: accounting
+what are my account receivable this year to date ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select * from master_txn_table where master_txn_table@account = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+190
+db: accounting
+this month , what are my ar ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month '
+pred: select master_txn_table@ar_paid from master_txn_table order by master_txn_table@ar_paid desc limit 1
+
+False
+191
+db: accounting
+this quarter to date , what are my account payable ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@account , master_txn_table@duedate from master_txn_table order by master_txn_table@duedate desc limit 1
+
+False
+192
+db: accounting
+show all transactions with kate whelan
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kate whelan '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+193
+db: accounting
+who are my outstanding debtors or creditors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+pred: select master_txn_table@customer , master_txn_table@debit from master_txn_table group by master_txn_table@customer order by sum ( master_txn_table@debit ) desc limit 1
+
+False
+194
+db: accounting
+how many invoices have we sent to john melton ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+195
+db: accounting
+show how many transactions you 've had with cool cars
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' cool cars '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+196
+db: accounting
+how much money does geeta kalapatapu still owe ?
+gold: select customers@balance from customers where customers@customer_name = ' geeta kalapatapu '
+pred: select sum ( master_txn_table@amount ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+197
+db: accounting
+have we billed barnett design for the pest control last month ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' pest control '
+pred: select master_txn_table@customer from master_txn_table join products on master_txn_table@product_service = products@businessid where products@product_service_type = 'value' and master_txn_table@transaction_date = ( select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@businessid where products@product_service_type = 'value' )
+
+True
+198
+db: accounting
+what is the balance owed by mark cho ?
+gold: select customers@balance from customers where customers@customer_name = ' mark cho '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+199
+db: accounting
+what are my ap last year ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ap_paid desc limit 1
+
+False
+200
+db: accounting
+what are my account receivable last 30 days ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 30 days '
+pred: select * from chart_of_accounts where chart_of_accounts@account_name = 'value' and chart_of_accounts@account_type = 'value' order by chart_of_accounts@account_name desc limit 1
+
+False
+201
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+202
+db: accounting
+when was the first time diego rodriguez paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' diego rodriguez ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from employees join customers on employees@businessid = customers@businessid where customers@customer_name = 'value' intersect select master_txn_table@createddate from employees join customers on employees@businessid = customers@businessid where customers@customer_name = 'value'
+
+False
+203
+db: accounting
+what was the most recent invoice for soil ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' soil ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table where master_txn_table@transaction_type = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+204
+db: accounting
+when was 55 twin lane first payment ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 55 twin lane ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table where master_txn_table@transaction_type = 'value' and master_txn_table@ar_paid = 'value' order by master_txn_table@ar_paid desc limit 1
+
+False
+205
+db: accounting
+what was the most recent invoice for kate whelan ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' kate whelan ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+206
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+207
+db: accounting
+show how many transactions you 've had with kookies by kathy
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kookies by kathy '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+208
+db: accounting
+what are my account payable today ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' today '
+pred: select master_txn_table@account from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+209
+db: accounting
+what are my ap this quarter to date ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@ap_paid from master_txn_table order by master_txn_table@ap_paid desc limit 1
+
+False
+210
+db: accounting
+how many installation did dylan sollfrank sell last 30 days ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@product_service = ' installation ' and master_txn_table@transaction_date in ' last 30 days '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@billing_zip_code = 'value' and master_txn_table@duedate <= 'value'
+
+False
+211
+db: accounting
+last fiscal year , how many hour did rago travel agency sell ?
+gold: select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' hour ' and master_txn_table@transaction_date in ' last fiscal year '
+pred: select count ( * ) from master_txn_table join chart_of_accounts on chart_of_accounts@account_name = master_txn_table@account join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and chart_of_accounts@account_name = 'value'
+
+False
+212
+db: accounting
+what payment method was used to pay invoice # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where payment_method@payment_method = 'value'
+
+False
+213
+db: accounting
+last year , what are my account payable ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+pred: select master_txn_table@account , master_txn_table@createddate from master_txn_table order by master_txn_table@createddate desc limit 1
+
+False
+214
+db: accounting
+when did geeta kalapatapu last pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' geeta kalapatapu ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+215
+db: accounting
+display the total number of transactions with video games by dan
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' video games by dan '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+216
+db: accounting
+what 's the total number of invoices we 've issued to travis waldron ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' travis waldron ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+217
+db: accounting
+what are my account payable this quarter to date ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+pred: select master_txn_table@account from master_txn_table order by master_txn_table@duedate desc limit 1
+
+False
+218
+db: accounting
+what 's the total number of invoices we 've issued to weiskopf consulting ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+219
+db: accounting
+what is my last invoice from kookies by kathy ?
+gold: select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kookies by kathy ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@debit from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value' order by master_txn_table@debit desc limit 1
+
+False
+220
+db: accounting
+last 30 days , what are my account receivable ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 30 days '
+pred: select master_txn_table@account , * from master_txn_table order by master_txn_table@duedate asc limit 'value'
+
+False
+221
+db: accounting
+what was the most recent invoice for paulsen medical supplies ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' paulsen medical supplies ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@account from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service_type = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+222
+db: accounting
+what 's the total number of invoices we 've issued to 55 twin lane ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+223
+db: accounting
+show how many transactions you 've had with paulsen medical supplies
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supplies '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name join products on master_txn_table@product_service = products@product_service where customers@customer_name = 'value' and products@product_service_type = 'value'
+
+False
+224
+db: accounting
+what are my ar last month ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last month '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@createddate = 'value' order by master_txn_table@ar_paid desc limit 1
+
+False
+225
+db: accounting
+display all of geeta kalapatapu 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+226
+db: accounting
+when was the last time travis waldron paid you ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' travis waldron ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@createddate from employees join customers on employees@businessid = customers@businessid where customers@customer_name = 'value' intersect select master_txn_table@createddate from employees join customers on employees@businessid = customers@businessid where customers@customer_name = 'value'
+
+False
+227
+db: accounting
+this week , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week '
+pred: select master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value'
+
+False
+228
+db: accounting
+what are my ar last fiscal year ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last fiscal year '
+pred: select master_txn_table@ar_paid from master_txn_table where master_txn_table@ar_paid = ( select max ( master_txn_table@ar_paid ) from master_txn_table )
+
+False
+229
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+230
+db: accounting
+this year to date , what are my account receivable ?
+gold: select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select master_txn_table@account , * from master_txn_table order by master_txn_table@duedate desc limit 1
+
+False
+231
+db: accounting
+show number of transactions with john melton
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+232
+db: accounting
+who are my outstanding debtors ?
+gold: select customers@customer_name , customers@balance from customers where customers@balance != 0
+pred: select master_txn_table@customer from master_txn_table group by master_txn_table@customer having count ( * ) > 'value'
+
+False
+233
+db: accounting
+when did freeman sporting goods first pay ?
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' freeman sporting goods ' order by master_txn_table@transaction_date limit 1
+pred: select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value' and customers@customer_name = 'value' intersect select master_txn_table@createddate from master_txn_table join customers on master_txn_table@customer = customers@businessid where customers@customer_name = 'value'
+
+False
+234
+db: accounting
+what was the most recent invoice for rondonuwu fruit and vegi ?
+gold: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' rondonuwu fruit and vegi ' order by master_txn_table@transaction_date desc limit 1
+pred: select master_txn_table@debit from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and customers@customer_full_name = 'value' order by master_txn_table@duedate desc limit 1
+
+False
+235
+db: accounting
+display all of gevelber photography 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' gevelber photography '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+236
+db: accounting
+what payment method was used to pay sales receipt # 101010
+gold: select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+pred: select payment_method@payment_method from master_txn_table join payment_method on master_txn_table@businessid = payment_method@businessid where master_txn_table@transaction_type = 'value'
+
+False
+237
+db: accounting
+this year to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year to date '
+pred: select master_txn_table@transaction_date , master_txn_table@ap_paid from master_txn_table group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+238
+db: accounting
+when was the last time we billed for service x
+gold: select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+pred: select max ( master_txn_table@transaction_date ) from master_txn_table join products on master_txn_table@product_service = products@product_service where products@product_service = 'value'
+
+False
+239
+db: accounting
+what 's the total number of invoices we 've issued to dylan sollfrank ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@transaction_type = ' invoice '
+pred: select count ( * ) from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+240
+db: accounting
+show all transactions with video games by dan
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' video games by dan '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value' and master_txn_table@account = 'value' and master_txn_table@transaction_type = 'value'
+
+False
+241
+db: accounting
+this month , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month '
+pred: select master_txn_table@ap_paid from master_txn_table order by master_txn_table@ap_paid asc limit 1
+
+False
+242
+db: accounting
+display all of kate whelan 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' kate whelan '
+pred: select * from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+False
+243
+db: accounting
+how many mastercard transactions did we have yesterday ?
+gold: select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+pred: select count ( * ) from master_txn_table where master_txn_table@transaction_date = 'value'
+
+False
+244
+db: accounting
+who has the most money outstanding ?
+gold: select customers@customer_name from customers order by customers@balance desc limit 1
+pred: select customers@customer_name from master_txn_table join customers on master_txn_table@customer = customers@customer_name group by customers@customer_name order by sum ( master_txn_table@amount ) desc limit 1
+
+False
+245
+db: accounting
+display all transactions involving 55 twin lane
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' 55 twin lane '
+pred: select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = 'value' group by master_txn_table@transaction_id having count ( * ) >= 'value'
+
+False
+246
+db: accounting
+this fiscal year to date , what are my ap ?
+gold: select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+pred: select master_txn_table@transaction_date , master_txn_table@ap_paid from master_txn_table where master_txn_table@createddate = 'value' group by master_txn_table@transaction_date order by count ( * ) desc limit 1
+
+False
+247
+db: accounting
+show all of weiskopf consulting 's transactions
+gold: select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' weiskopf consulting '
+pred: select master_txn_table@transaction_id from master_txn_table join customers on master_txn_table@customer = customers@customer_name where customers@customer_name = 'value'
+
+True
+248
+db: accounting
+what is the balance owed by john melton ?
+gold: select customers@balance from customers where customers@customer_name = ' john melton '
+pred: select customers@balance from customers where customers@customer_name = 'value'
+
+False
+249
+db: accounting
+i need a list of equipment purchased for united state treasury
+gold: select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' united state treasury '
+pred: select distinct products@product_service from master_txn_table join chart_of_accounts on master_txn_table@account = chart_of_accounts@account_name join products on master_txn_table@product_service = products@product_service where chart_of_accounts@account_name = 'value'
+

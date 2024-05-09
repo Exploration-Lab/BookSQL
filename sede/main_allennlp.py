@@ -3,7 +3,9 @@ import os
 import shutil
 
 from allennlp.commands import main
-os.environ['WANDB_API_KEY'] = "79fa6ac86245ac0aeb170f02225dceb8088b2213"
+#add your WANDB_API_KEY
+api_key = input('Give your WANDB_API_KEY or skip it')
+os.environ['WANDB_API_KEY'] = api_key
 
 # if os.path.exists("experiments/booksql_experiment"):
 #     shutil.rmtree("experiments/booksql_experiment")

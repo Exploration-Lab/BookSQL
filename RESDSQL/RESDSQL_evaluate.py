@@ -23,8 +23,8 @@ rouge = nlp_evaluate.load('rouge')
 # global date_list
 # date_list = random.choices(master_txn_table['Transaction date'].unique(), k=20)
 
-sqlite_path = "/DATA1/rahul/text2SQL/booksql_generation/generated_data/testing/updated_accounting_for_testing.sqlite"
-inp_file_path = "eval_results/28_may_2023/epoch-14_sql (1).txt"
+sqlite_path = "data/accounting.sqlite"
+inp_file_path = "eval_results/test_prediction.txt"
 
 
 def get_data(inp_file_path):
@@ -336,4 +336,4 @@ if len(prev_non_exec_df)>0:
     prev_non_exec_df.loc[:, 'PRED_res']=None
 
     new_df = pd.concat([new_df, prev_non_exec_df], ignore_index=True).reset_index()
-new_df.to_csv("eval_results/28_may_2023/RESDSQL_results.csv")
+new_df.to_csv("eval_results/RESDSQL_results.csv")

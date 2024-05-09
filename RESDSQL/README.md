@@ -20,8 +20,10 @@ If this repository could help you, please cite the following paper:
 ## Overview
 We introduce a new Text-to-SQL parser, **RESDSQL** (**R**anking-enhanced **E**ncoding plus a **S**keleton-aware **D**ecoding framework for Text-to-**SQL**), which attempts to decoulpe the schema linking and the skeleton parsing to reduce the difficuty of Text-to-SQL. More details can be found in our [paper](https://arxiv.org/abs/2302.05965). All experiments are conducted on a single NVIDIA A100 80G GPU.
 
+Note - Reference Code - [Code](https://github.com/RUCKBReasoning/RESDSQL)
+
 ## Evaluation Results
-We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, and Spider-Realistic. Let's look at the following numbers:
+We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, Spider-Realistic and **BookSQL**. Let's look at the following numbers:
 
 **On Spider:**
 
@@ -34,11 +36,16 @@ We evaluate RESDSQL on four datasets: Spider, Spider-DK, Spider-Syn, and Spider-
 | RESDSQL-Base+NatSQL | 74.1% | 80.2% | - | - | [Google Drive link](https://drive.google.com/file/d/1QyfSfHHrxfIM5X9gKUYNr_0ZRVvb1suV/view?usp=share_link) | [Link](https://pan.baidu.com/s/1XegaZFvXuZ_jf3P-9YPQCQ) (pwd: pyxf) |
 | RESDSQL-Base | 71.7% | 77.9% | - | - | [Google Drive link](https://drive.google.com/file/d/1lqZ81f_fSZtg6BRcRw1-Ol-RJCcKRsmH/view?usp=sharing) | [Link](https://pan.baidu.com/s/1-6H7zStq0WCJHTjDuVspoQ) (pwd: wuek) |
 
-**On Spider-DK, Spider-Syn, and Spider-Realistic:**
+**On Spider-DK, Spider-Syn, Spider-Realistic:**
 
 | Model | DK EM | DK EX | Syn EM | Syn EX | Realistic EM | Realistic EX |
 |-------|-------|-------|--------|--------|--------------|--------------|
 | RESDSQL-3B+NatSQL| 53.3% | 66.0% | 69.1% | 76.9% | 77.4% | 81.9% |
+
+**On BookSQL**
+| Model | EM | EX | PCM-F1 | BLEU-4 | ROUGE-L 
+|-------|-------|-------|-------|-------|-------|
+| RESDSQL-Large | 51.5% | 54.4% | 81.0% | 74.0% | 81.0%
 
 ## Prerequisites
 Create a virtual anaconda environment:
@@ -76,6 +83,8 @@ unzip data.zip
 unzip database.zip
 ```
 
+Download BookSQL from here [Coming Soon]('#')
+
 ## Inference
 Our results can be easily reproduced through our released checkpionts.
 ### Step1: Prepare Checkpoints
@@ -106,9 +115,9 @@ After downloading and unpacking all checkpoints, the `models` folder should be:
 ```
 
 ### Step2: Run Inference
-The inference scripts are located in `scripts/inference`. Concretely, `infer_text2natsql.sh` represents RESDSQL-\*+NatSQL, `infer_text2sql.sh` represents RESDSQL-\*. For example, you can run the inference of RESDSQL-3B+NatSQL on Spider's dev set via:
+The inference scripts are located in `scripts/inference`. Concretely, `infer_text2natsql.sh` represents RESDSQL-\*+NatSQL, `infer_text2sql.sh` represents RESDSQL-\*. For example, you can run the inference of RESDSQL-large on BookSQL's dev set via:
 ```sh
-sh scripts/inference/infer_text2natsql.sh 3b spider
+sh scripts/inference/infer_booksql_text2sql.sh 3b booksql
 ```
 The first argument can be selected from [base, large, 3b] and the second argument can be selected from [spider, spider-realistic, spider-syn, spider-dk].
 
@@ -133,7 +142,7 @@ sh scripts/train/text2natsql/train_text2natsql_t5_large.sh
 sh scripts/train/text2natsql/train_text2natsql_t5_base.sh
 ```
 
-**Training and evaluating RESDSQL-\* on Spider**
+**Training and evaluating RESDSQL-\* on BookSQL**
 ```sh
 # Step1: preprocess dataset
 sh scripts/train/text2sql/preprocess.sh

@@ -1,0 +1,480 @@
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' sonnenschein family store ' and master_txn_table@product_service = ' pest control '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week to date '
+select min ( master_txn_table@credit ) from master_txn_table where master_txn_table@customer = ' paulsen medical supplies ' and master_txn_table@transaction_type = ' bill ' and master_txn_table@vendor = ' hick hardware '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 7 days '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 55 twin lane ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' yesterday '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' service ' and master_txn_table@transaction_date in ' this year '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' pam seitz '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this quarter '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 12 months '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' video game by dan ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@product_service = ' services ' and master_txn_table@transaction_date in ' last month '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' shara barnett '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kate whelan '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month '
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' mark cho '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kate whelan '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@product_service = ' rock fountain ' and master_txn_table@transaction_date in ' this week '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select customers@balance from customers where customers@customer_name = ' rago travel agency '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@product_service = ' trimming ' and master_txn_table@transaction_date in ' this quarter to date '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@product_service = ' hours '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last month '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' yesterday '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' yesterday '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@product_service = ' service ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 30 days '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' shara barnett ' order by master_txn_table@transaction_date limit 1
+select min ( master_txn_table@credit ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@transaction_type = ' bill ' and master_txn_table@vendor = ' edd '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' red rock diner ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select customers@balance from customers where customers@customer_name = ' shara barnett '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' mark cho ' and master_txn_table@product_service = ' pest control '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' kookies by kathy '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' mark cho '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' wedding planning by whitney '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@product_service = ' maintenance & repair ' and master_txn_table@transaction_date in ' last quarter '
+select customers@balance from customers where customers@customer_name = ' diego rodriguez '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' kookies by kathy ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' duke basketball camp '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' wedding planning by whitney ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@product_service = ' installation ' and master_txn_table@transaction_date in ' this month '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' tim philip masonry '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' paulsen medical supplies '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' design ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' mark cho ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' wedding planning by whitney ' and master_txn_table@product_service = ' rock fountain ' and master_txn_table@transaction_date in ' this week to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' geeta kalapatapu ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' barnett design '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' 0969 ocean view road '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' paulsen medical supply ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' video game by dan ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' kookies by kathy ' and master_txn_table@product_service = ' lighting ' and master_txn_table@transaction_date in ' this year to date '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' travis waldron '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+select customers@balance from customers where customers@customer_name = ' wedding planning by whitney '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year to date '
+select customers@balance from customers where customers@customer_name = ' freeman sporting good '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year '
+select customers@balance from customers where customers@customer_name = ' sushi by katsuyuki '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' books by bessie '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' sod ' and master_txn_table@transaction_date in ' this quarter to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' travis waldron ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' diego rodriguez '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' barnett design '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dukes basketball camp ' and master_txn_table@transaction_type = ' invoice '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last 7 days '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' shara barnett ' order by master_txn_table@transaction_date limit 1
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@customer_name from customers order by customers@balance desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@transaction_type = ' invoice '
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' shara barnett '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@product_service = ' design ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' red rock diner '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' gevelber photography ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' kookies by kathy ' and master_txn_table@product_service = ' rock fountain ' and master_txn_table@transaction_date in ' this week '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' repair ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last month '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' gevelber photography ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select customers@balance from customers where customers@customer_name = ' video games by dan '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' weiskopf consulting ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@customer , min ( master_txn_table@credit ) from master_txn_table group by master_txn_table@customer
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last month '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' freeman sporting goods ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' red rock diner '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' and master_txn_table@product_service = ' rocks ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' wedding planning by whitney ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' sonnenschein family store ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month to date '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this quarter to date '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply ' and master_txn_table@transaction_type = ' invoice '
+select customers@balance from customers where customers@customer_name = ' sushi by katsuyuki '
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' john melton ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' gevelber photography ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' rago travel agency ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' red rock diner ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' kookies by kathy ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' video game by dan ' and master_txn_table@product_service = ' concrete ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' pest control ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+select customers@balance from customers where customers@customer_name = ' gevelber photography '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@product_service = ' lighting ' and master_txn_table@transaction_date in ' last 7 days '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' tony rondonuwu '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week to date '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' edd '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' gevelber photography ' order by master_txn_table@transaction_date limit 1
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' associate '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' maintenance & repair ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' yesterday '
+select customers@balance from customers where customers@customer_name = ' 55 twin lane '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@product_service = ' service ' and master_txn_table@transaction_date in ' last quarter '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' cool cars ' and master_txn_table@transaction_type = ' invoice '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' travis waldron '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' video game by dan ' and master_txn_table@product_service = ' sprinkler heads ' and master_txn_table@transaction_date in ' this week to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@transaction_type = ' invoice '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' trimming ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last fiscal year '
+select customers@balance from customers where customers@customer_name = ' mark cho '
+select customers@balance from customers where customers@customer_name = ' 0969 ocean view road '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' design ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this week '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month to date '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' weiskopf consulting ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 12 months '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' gevelber photography ' order by master_txn_table@transaction_date limit 1
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' today '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' duke basketball camp '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' today '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' rago travel agency ' and master_txn_table@product_service = ' hours ' and master_txn_table@transaction_date in ' last quarter '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' rago travel agency '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' shara barnett '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select customers@balance from customers where customers@customer_name = ' sonnenschein family store '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' cool cars ' and master_txn_table@product_service = ' rock fountain ' and master_txn_table@transaction_date in ' this month to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' geeta kalapatapu ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select customers@balance from customers where customers@customer_name = ' 55 twin lane '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' shara barnett ' and master_txn_table@product_service = ' maintenance ' and master_txn_table@transaction_date in ' this year '
+select customers@balance from customers where customers@customer_name = ' travis waldron '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' red rock diner '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' shara barnett ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' kookies by kathy ' and master_txn_table@product_service = ' services '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' red rock diner ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' red rock diner '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last 12 months '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' freeman sporting good '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' maintenance & repair ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year to date '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' freeman sporting goods ' and master_txn_table@product_service = ' lighting ' and master_txn_table@transaction_date in ' this year to date '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select customers@balance from customers where customers@customer_name = ' kate whelan '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' maintenance & repair ' and master_txn_table@transaction_date in ' this quarter to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' wedding planning by whitney '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' barnett design '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki '
+select customers@balance from customers where customers@customer_name = ' 0969 ocean view road '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' geeta kalapatapu ' and master_txn_table@product_service = ' sod ' and master_txn_table@transaction_date in ' last year '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' duke basketball camp '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' travis waldron ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' diego rodriguez ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' weiskopf consulting ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last quarter '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this month to date '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month to date '
+select customers@balance from customers where customers@customer_name = ' diego rodriguez '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select customers@balance from customers where customers@customer_name = ' wedding planning by whitney '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' freeman sporting goods ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' video games by dan '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' gevelber photography ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' rago travel agency ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' rondonuwu fruit and vegi ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@product_service = ' sod ' and master_txn_table@transaction_date in ' last 7 days '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' gevelber photography ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 55 twin lane ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' cool cars ' and master_txn_table@transaction_type = ' invoice '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' geeta kalapatapu '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' gevelber photography '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank ' and master_txn_table@product_service = ' sprinkler pipes ' and master_txn_table@transaction_date in ' last 12 months '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' travis waldron ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki '
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' 0969 ocean view road '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi '
+select customers@balance from customers where customers@customer_name = ' travis waldron '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@product_service = ' rocks ' and master_txn_table@transaction_date in ' this month '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week to date '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' shara barnett ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' kookies by kathy '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' sprinkler pipe ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last month '
+select customers@customer_name , customers@balance from customers where customers@balance != 0 union select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' mark cho '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' rondonuwu fruit and vegi ' order by master_txn_table@transaction_date limit 1
+select customers@balance from customers where customers@customer_name = ' rondonuwu fruit and vegi '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@transaction_type = ' invoice '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' gevelber photography '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' freeman sporting goods '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kate whelan ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@transaction_id = 101010
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' red rock diner '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' design ' order by master_txn_table@transaction_date desc limit 1
+select customers@balance from customers where customers@customer_name = ' cool car '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply ' and master_txn_table@product_service = ' trimming ' and master_txn_table@transaction_date in ' last year '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' freeman sporting good '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' yesterday '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last quarter '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@customer = ' dukes basketball camp ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' paulsen medical supply ' and master_txn_table@product_service = ' hours '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' brosnahan insurance agency '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select customers@balance from customers where customers@customer_name = ' rondonuwu fruit and vegi '
+select master_txn_table@vendor , max ( master_txn_table@credit ) from master_txn_table group by master_txn_table@vendor
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' freeman sporting good ' and master_txn_table@transaction_type = ' invoice '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' mark cho ' and master_txn_table@product_service = ' repair ' and master_txn_table@transaction_date in ' last 30 days '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' last fiscal year '
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' today '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' rocks ' and master_txn_table@transaction_date in ' last 30 days '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' dylan sollfrank '
+select customers@balance from customers where customers@customer_name = ' red rock diner '
+select customers@balance from customers where customers@customer_name = ' duke basketball camp '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select customers@balance from customers where customers@customer_name = ' sonnenschein family store '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@product_service = ' installation ' and master_txn_table@transaction_date in ' this month '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' sonnenschein family store ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' geeta kalapatapu ' and master_txn_table@product_service = ' maintenance & repair ' and master_txn_table@transaction_date in ' today '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@product_service = ' maintenance & repair ' and master_txn_table@transaction_date in ' this fiscal year '
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' red rock diner ' order by master_txn_table@transaction_date limit 1
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select customers@balance from customers where customers@customer_name = ' weiskopf consulting '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this year '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' shara barnett ' order by master_txn_table@transaction_date limit 1
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' rago travel agency '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month to date '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' robertson & associates '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sushi by katsuyuki ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' shara barnett '
+select distinct master_txn_table@transaction_id , master_txn_table@amount , master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' kookies by kathy ' order by master_txn_table@transaction_date limit 1
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' tony rondonuwu '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' barnett design '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' diego rodriguez ' order by master_txn_table@transaction_date limit 1
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' travis waldron '
+select master_txn_table@customer , max ( master_txn_table@credit ) from master_txn_table group by master_txn_table@customer
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this week '
+select customers@balance from customers where customers@customer_name = ' mark cho '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' geeta kalapatapu ' order by master_txn_table@transaction_date limit 1
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this month to date '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' mahoney mug '
+select customers@balance from customers where customers@customer_name = ' rondonuwu fruit and vegi '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@transaction_type = ' payment ' and master_txn_table@customer = ' 0969 ocean view road ' order by master_txn_table@transaction_date limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' cool car ' and master_txn_table@transaction_type = ' invoice '
+select distinct master_txn_table@product_service from master_txn_table where master_txn_table@transaction_type = ' purchase order ' and master_txn_table@vendor = ' mahoney mugs '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this quarter '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' hours ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' john melton ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' travis waldron ' and master_txn_table@product_service = ' installation ' and master_txn_table@transaction_date in ' this month '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@transaction_type = ' invoice '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select customers@balance from customers where customers@customer_name = ' 55 twin lane '
+select master_txn_table@product_service , sum ( master_txn_table@credit ) from master_txn_table group by master_txn_table@product_service
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' freeman sporting good ' and master_txn_table@product_service = ' gardening ' and master_txn_table@transaction_date in ' this week '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select customers@balance from customers where customers@customer_name = ' red rock diner '
+select customers@balance from customers where customers@customer_name = ' barnett design '
+select customers@customer_name from customers order by customers@balance desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' kookies by kathy ' and master_txn_table@transaction_type = ' invoice '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' john melton '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@product_service = ' service x ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+select sum ( master_txn_table@debit ) from master_txn_table where master_txn_table@account = ' account receivable ' and master_txn_table@transaction_date in ' this fiscal year to date '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' geeta kalapatapu '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last year '
+select vendors@vendor_name , vendors@balance from vendors where vendors@balance != 0
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' 0969 ocean view road ' and master_txn_table@product_service = ' allowance ' and master_txn_table@transaction_date in ' last 30 days '
+select master_txn_table@transaction_date from master_txn_table where master_txn_table@customer = ' wedding planning by whitney ' and master_txn_table@transaction_type = ' payment ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select distinct master_txn_table@transaction_id from master_txn_table where master_txn_table@customer = ' cool car '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' today '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' this quarter to date '
+select master_txn_table@payment_method from master_txn_table where master_txn_table@transaction_type = ' sales receipt ' and master_txn_table@transaction_id = 101010
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' invoice ' and master_txn_table@product_service = ' lighting ' order by master_txn_table@transaction_date desc limit 1
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select sum ( master_txn_table@credit ) from master_txn_table where master_txn_table@account = ' account payable ' and master_txn_table@transaction_date in ' last month '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select customers@customer_name , customers@balance from customers where customers@balance != 0
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' sonnenschein family store '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' mastercard '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@transaction_type = ' invoice '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' freeman sporting good ' and master_txn_table@product_service = ' trimming ' and master_txn_table@transaction_date in ' this fiscal year '
+select master_txn_table@transaction_id from master_txn_table where master_txn_table@transaction_type = ' bill ' and master_txn_table@customer = ' john melton ' and master_txn_table@product_service = ' concrete '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' barnett design ' and master_txn_table@transaction_type = ' invoice '
+select customers@balance from customers where customers@customer_name = ' dylan sollfrank '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' diego rodriguez ' and master_txn_table@transaction_type = ' invoice '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supply '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@payment_method = ' visa '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' weiskopf consulting ' and master_txn_table@product_service = ' gardening ' and master_txn_table@transaction_date in ' this year to date '
+select sum ( master_txn_table@quantity ) from master_txn_table where master_txn_table@customer = ' red rock diner ' and master_txn_table@product_service = ' pest control ' and master_txn_table@transaction_date in ' this quarter to date '
+select customers@balance from customers where customers@customer_name = ' shara barnett '
+select count ( distinct master_txn_table@transaction_id ) from master_txn_table where master_txn_table@customer = ' paulsen medical supplies ' and master_txn_table@transaction_type = ' invoice '

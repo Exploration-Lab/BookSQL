@@ -1,0 +1,11 @@
+,Unnamed: 0,Query,Sql pattern new
+0,0,Who are my outstanding creditors?,"select vendor_name, balance from vendors where balance != 0"
+1,1,How often do we bill design for freeman sporting goods?,"select sum(quantity) from master_txn_table where customers = ""freeman sporting goods"" and product_service = ""design"""
+2,2,Who has the most money oustanding?,"select customers, sum(open_balance) as outstanding from ( select distinct customers, open_balance from master_txn_table ) group by customers order by outstanding desc limit 1 "
+3,3,How much money did we make august?,"select sum(credit) from master_txn_table  as T1 join chart_of_accounts as T2 on T1.account = T2.account_name where account_type in ('Income','Other Income') and transaction_date BETWEEN date(current_date) AND date(current_date) "
+4,4,Who are my outstanding creditors?,"select vendor_name, balance from vendors where balance != 0"
+5,5,"on <date>, what are my AR?",select sum(debit) from master_txn_table where account = 'account receivable' and transaction_date BETWEEN date(current_date) AND date(current_date) 
+6,6,What are my AR Last 7 days?,"select sum(debit) from master_txn_table where account = 'account receivable' and transaction_date BETWEEN date( current_date, ""-7 days"") AND date( current_date) "
+7,7,"yesterday, how much did we pay chin's gas and oil?","select sum(debit) from master_txn_table as T1 join chart_of_accounts as T2 on T1.account = T2.account_name where account_type in ('Expense', 'Other Expense') and vendor = ""chin's gas and oil"" and transaction_date date( current_date, ""-1 days"")"
+8,8,Number of invoices created for utilities in Last year?,"select count(distinct transaction_id) from master_txn_table where transaction_type = 'invoice' and instr(account,""utilities"") and transaction_date BETWEEN date(current_date,  'start of year', '-1 days', 'start of year') AND date(current_date,  'start of year', '-1 days')"
+9,9,What are my transactions for the year?,"select distinct transaction_id, amount from master_txn_table where strftime(""%Y"", transaction_date) = strftime(""%Y"", current_date)"

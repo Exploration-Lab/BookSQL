@@ -99,46 +99,48 @@ curl --location --request POST 'http://localhost:8079/sqltojson' \
 
 Training SEDE:
 ```
-python main_allennlp.py train configs/t5_text2sql_sede.jsonnet -s experiments/name_of_experiment --include-package src
+python main_allennlp.py train configs/t5_text2sql_booksql.jsonnet -s experiments/name_of_experiment --include-package src
 ```
 
 Training Spider:
 
-In order to run our model + Partial Components Match F1 metric on Spider dataset,
-one must download Spider dataset from here: https://yale-lily.github.io/spider and save it under `data/spider` folder inside the root project directory.
-After that, one can run the following command in order to train our model on Spider dataset:
+In order to run our model + Partial Components Match F1 metric on BookSQL dataset,
+one must download BookSQL dataset from here: `Link Coming Soon` and save it under `data/booksql` folder inside the root project directory.
+After that, one can run the following command in order to train our model on BookSQL dataset:
 
 ```
-python main_allennlp.py train configs/t5_text2sql_spider.jsonnet -s experiments/name_of_experiment --include-package src
+python main_allennlp.py train configs/t5_text2sql_booksql.jsonnet -s experiments/name_of_experiment --include-package src
 ```
 
 ### Evaluation (SEDE)
 
 Run evaluation on SEDE validation set with:
 ```
-python main_allennlp.py evaluate experiments/name_of_experiment data/sede/val.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --cuda-device 0 --batch-size 10 --include-package src
+python main_allennlp.py evaluate experiments/name_of_experiment data/booksql/val.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --cuda-device 0 --batch-size 10 --include-package src
 ```
 
 Run evaluation on SEDE test set with:
 ```
-python main_allennlp.py evaluate experiments/name_of_experiment data/sede/test.jsonl --output-file experiments/name_of_experiment/test_predictions.sql --cuda-device 0 --batch-size 10 --include-package src
+python main_allennlp.py evaluate experiments/name_of_experiment data/booksql/test.jsonl --output-file experiments/name_of_experiment/test_predictions.sql --cuda-device 0 --batch-size 10 --include-package src
 ```
 
-Note - In order to evaluate a trained model on Spider, one needs to replace the experiment name and the data path to: `data/spider/dev.json`.
+Note - In order to evaluate a trained model on BookSQL, one needs to replace the experiment name and the data path to: `data/booksql/dev.json`.
 
 ### Inference (SEDE)
 
 Predict SQL queries on SEDE validation set with:
 ```
-python main_allennlp.py predict experiments/name_of_experiment data/sede/val.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --use-dataset-reader --predictor seq2seq2 --cuda-device 0 --batch-size 10 --include-package src
+python main_allennlp.py predict experiments/name_of_experiment data/booksql/val.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --use-dataset-reader --predictor seq2seq2 --cuda-device 0 --batch-size 10 --include-package src
 ```
 
 Predict SQL queries on SEDE test set with:
 ```
-python main_allennlp.py predict experiments/name_of_experiment data/sede/test.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --use-dataset-reader --predictor seq2seq2 --cuda-device 0 --batch-size 10 --include-package src
+python main_allennlp.py predict experiments/name_of_experiment data/booksql/test.jsonl --output-file experiments/name_of_experiment/val_predictions.sql --use-dataset-reader --predictor seq2seq2 --cuda-device 0 --batch-size 10 --include-package src
 ```
 
-Note - In order to run inference with a trained model on Spider (validation set), one needs to replace the experiment name and the data path to: `data/spider/dev.json`.
+Note - In order to run inference with a trained model on BookSQL (validation set), one needs to replace the experiment name and the data path to: `data/booksql/dev.json`.
+
+Note - To run train, evaluate, inference at a time do - `./run_pipeline.sh`
 
 ## Acknowledgements
 

@@ -142,23 +142,23 @@ python -u text2sql.py \
     --num_return_sequences 8 \
     --target_type "sql" > logs/train.log
     
-echo "Evaluating on test sets"
-python -u evaluate_text2sql_ckpts.py \
-    --batch_size $batch_size \
-    --device "0" \
-    --seed 42 \
-    --save_path "models/booksql-t5-large" \
-    --eval_results_path "eval_results/booksql-t5-large" \
-    --mode eval \
-    --dev_filepath "data/booksql/folds/test_fold/$data_folder_name/preprocessed_data/resdsql_test.json" \
-    --original_dev_filepath "data/booksql/folds/test_fold/$data_folder_name/test.json" \
-    --db_path "data/booksql/database" \
-    --num_beams 8 \
-    --num_return_sequences 8 \
-    --target_type "sql" > logs/eval.log
+# echo "Evaluating on test sets"
+# python -u evaluate_text2sql_ckpts.py \
+#     --batch_size $batch_size \
+#     --device "0" \
+#     --seed 42 \
+#     --save_path "models/booksql-t5-large" \
+#     --eval_results_path "eval_results/booksql-t5-large" \
+#     --mode eval \
+#     --dev_filepath "data/booksql/folds/test_fold/$data_folder_name/preprocessed_data/resdsql_test.json" \
+#     --original_dev_filepath "data/booksql/folds/test_fold/$data_folder_name/test.json" \
+#     --db_path "data/booksql/database" \
+#     --num_beams 8 \
+#     --num_return_sequences 8 \
+#     --target_type "sql" > logs/eval.log
 
 
-best_checkpoint_name="checkpoint-20"
+# best_checkpoint_name="checkpoint-20"
 
 # echo "select the best text2sql-t5-large ckpt"
 # python -u evaluate_text2sql_ckpts.py \
