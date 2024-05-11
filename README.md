@@ -6,7 +6,7 @@ The repository contains the full codebase of experiments and results of the NAAC
 You can get BookSQL dataset from this link [Will update soon]('#').
 
 Our contributions can be summarized as below:
-* We create a new and large-scale Text-to-SQL financial dataset referred to as BookSQL. The dataset consists of a financial-accounts database of 1 million records. The corresponding natural language queries are designed to address various practical intricacies of the accounting domain. BookSQL has 100k Query-SQL pairs which is about 1.25 times the existing largest Text-2-SQL dataset: WikiSQL. In particular, for designing the queries, we consulted financial experts to understand various practical use cases. %We also plan to create a leaderboard where researchers can benchmark various Text-to-SQL models for the accounting domain. 
+* We create a new and large-scale Text-to-SQL financial dataset referred to as BookSQL. The dataset consists of a financial-accounts database of 1 million records. The corresponding natural language queries are designed to address various practical intricacies of the accounting domain. BookSQL has 100k Query-SQL pairs which is about 1.25 times the existing largest Text-2-SQL dataset: WikiSQL. In particular, for designing the queries, we consulted financial experts to understand various practical use cases.
 * We run existing state-of-the-art models (including GPT-4) for the Text-to-SQL task on BookSQL  to see the performance and analyze the shortcomings of the models trained on existing large-scale datasets such as Spider, pointing towards developing specialized models for this domain.
 ## License
  --
