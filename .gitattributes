@@ -1,0 +1,2 @@
+UNISAR/data/spider/database/* filter=lfs diff=lfs merge=lfs -text
+UNISAR/folds/fold0/* filter=lfs diff=lfs merge=lfs -text
