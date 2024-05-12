@@ -1,6 +1,6 @@
 ### BookSQL Description
 
-It'll generate BookSQL Data - accounting database (accounting.sqlite), train.json & val.json
+This will generate BookSQL Data - accounting database (accounting.sqlite), train.json and val.json
 
 * accounting.sqlite
     1. Master_txn_table - It is the main table which consists of all the transactions record that happened in the businesses.
@@ -17,6 +17,7 @@ It'll generate BookSQL Data - accounting database (accounting.sqlite), train.jso
     Validation Examples - 7605
 
 Format of train/val/test.json
+```
     Ex - 
     {
         "Query":"What was the first invoice for Matthew James?",
@@ -24,6 +25,7 @@ Format of train/val/test.json
         "Levels":"medium",
         "split":"test"
     }
+```
 
     Query - Natural language query of users
     SQL - GOLD SQL
