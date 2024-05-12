@@ -1,6 +1,6 @@
 # BookSQL (A Large Scale Text-to-SQL Dataset for Accounting Domain)
 
-The dataset can be obtained by filling this google [form](#). After filling this form, you will get access to the dataset link in a week. Please note that data is free to use for academic research and but not for commercial usage. 
+The dataset can be obtained via [Hugging Face](https://huggingface.co/datasets/Exploration-Lab/BookSQL). After filling this form, you will get access to the dataset link in a week. Please note that data is free to use for academic research and but not for commercial usage. 
 
 
 ## BookSQL dataset statistics
