@@ -12,11 +12,11 @@ This will generate BookSQL Data - accounting database (accounting.sqlite), train
     7. Employees - It consists of the details of employees such as name, employee ID, hire date, etc working in particular business.
 
 * train.json
-    Training Examples - 70828
+    - Training Samples - 70828
 * val.json
-    Validation Examples - 7605
+    - Validation Samples - 7605
 * test.json
-    Testing Samples - 21567
+    - Testing Samples - 21567
 
 Format of train/val/test.json:
 ```
