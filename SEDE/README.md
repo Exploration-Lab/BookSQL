@@ -98,7 +98,7 @@ python main_allennlp.py train configs/t5_text2sql_booksql.jsonnet -s experiments
 Training BookSQL:
 
 In order to run our model + Partial Components Match F1 metric on BookSQL dataset,
-one must download BookSQL dataset from here: `Link Coming Soon` and save it under `data/booksql` folder inside the root project directory.
+one must download BookSQL dataset from here: [Dataset](https://github.com/Exploration-Lab/BookSQL/blob/main/DATA/README.md) and save it under `data/booksql` folder inside the root project directory.
 After that, one can run the following command in order to train our model on BookSQL dataset:
 
 ```

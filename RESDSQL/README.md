@@ -52,7 +52,7 @@ mv ./test-suite-sql-eval ./test_suite
 cd ..
 ```
 
-Download BookSQL from here [Coming Soon]('#')
+Download BookSQL from here [https://github.com/Exploration-Lab/BookSQL/blob/main/DATA/README.md](https://github.com/Exploration-Lab/BookSQL/blob/main/DATA/README.md)
 
 ## Inference
 Our results can be easily reproduced through our released checkpionts.
@@ -61,7 +61,7 @@ Our results can be easily reproduced through our released checkpionts.
 First, you should download T5 checkpoints from the table shown above. Then, you **must** download our cross-encoder checkpoints because the method is two-stage. Here are links: 
 | Cross-encoder Checkpoints | Hugging Face |
 |----------|-----------|
-| Cross-encoder (for SQL) | [Link]('#') |
+| Cross-encoder (for SQL) | [Link](https://github.com/Exploration-Lab/BookSQL/blob/main/DATA/README.md) |
 
 After downloading and unpacking all checkpoints, the `models` folder should be:
 ```

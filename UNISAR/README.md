@@ -8,19 +8,7 @@ This paper introduces [UniSAr](https://arxiv.org/pdf/2203.07781.pdf), which exte
 [//]: # (On seven well-known text-to-SQL datasets covering multi-domain, multi-table and multi-turn, UniSAr demonstrates highly comparable or better performance to the most advanced specifically-designed text-to-SQL models.)
 
 ## Dataset and Model
-[Spider](https://github.com/taoyds/spider) -> `./data/spider`
-
-[Fine-tuned BART model](https://huggingface.co/dreamerdeo/mark-bart/tree/main)  -> `./models/spider_sl`
-(Please download this model by `git-lfs` to avoid the [issue](https://github.com/DreamerDeo/UniSAr_text2sql/issues/1).)
-
-[BookSQL - Coming Soon](#)
-
-```angular2html
-sudo apt-get install git-lfs
-git lfs install
-git clone https://huggingface.co/dreamerdeo/mark-bart
-```
-
+[Download BookSQL Datasets and Checkpoints](https://github.com/Exploration-Lab/BookSQL/blob/main/DATA/README.md)
 
 ## Main dependencies
 * Python version >= 3.6
