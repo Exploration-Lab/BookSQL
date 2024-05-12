@@ -30,7 +30,7 @@ Our contributions can be summarized as below:
 
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" width="120" height="50"></a>
 
-The BookSQL dataset follows [CC-BY-NC-SA](CC-BY-NC-SA) license. Thus, users can share and adapt our dataset if they give credit to us and do not use our dataset for any commercial purposes.
+The BookSQL dataset follows [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) license. Users can share and adapt our dataset if they give credit to us and do not use our dataset for any commercial purposes.
 
 ## Citation
 
