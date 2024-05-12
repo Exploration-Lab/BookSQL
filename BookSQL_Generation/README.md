@@ -16,9 +16,8 @@ This will generate BookSQL Data - accounting database (accounting.sqlite), train
 * val.json
     Validation Examples - 7605
 
-Format of train/val/test.json
+Format of train/val/test.json:
 ```
-    Ex - 
     {
         "Query":"What was the first invoice for Matthew James?",
         "SQL":"select transaction_id from master_txn_table where customers = \"Matthew James\" and transaction_type = 'invoice' order by transaction_date limit 1",
