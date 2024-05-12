@@ -3,7 +3,7 @@ BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain (Paper: [Will U
 
 The repository contains the full codebase of experiments and results of the NAACL 2024 paper "BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain". 
 
-You can get BookSQL dataset from this link [Will update soon]('#').
+You can get BookSQL dataset from this link [https://github.com/Exploration-Lab/BookSQL/tree/main/DATA](https://github.com/Exploration-Lab/BookSQL/tree/main/DATA).
 
 Given the importance and wide prevalence of business databases across the world, the proposed dataset, BookSQL focuses on the finance and accounting domain. 
 Accounting databases are used across a wide spectrum of industries like construction, healthcare, retail, educational services, insurance, restaurant, real estate, etc. Business in these industries arranges their financial transactions into their own different set of categories (called a chart of accounts [Industry Details](https://www.investopedia.com/terms/c/chart-accounts.asp) in accounting terminology. 
@@ -11,7 +11,7 @@ Accounting databases are used across a wide spectrum of industries like construc
 Text-to-SQL system developed on BookSQL will be robust at handling various types of accounting databases. The total size of the dataset is 1 million. The dataset is prepared under financial experts' supervision, and the dataset's statistics are provided in below table. The dataset consists of 27 businesses, and each business has around 35k - 40k transactions.
 
 Our contributions can be summarized as below:
-* We create a new and large-scale Text-to-SQL financial dataset referred to as BookSQL. The dataset consists of a financial-accounts database of 1 million records. The corresponding natural language queries are designed to address various practical intricacies of the accounting domain. BookSQL has 100k Query-SQL pairs which is about 1.25 times the existing largest Text-2-SQL dataset: WikiSQL. In particular, for designing the queries, we consulted financial experts to understand various practical use cases. %We also plan to create a leaderboard where researchers can benchmark various Text-to-SQL models for the accounting domain. 
+* We create a new and large-scale Text-to-SQL financial dataset referred to as BookSQL. The dataset consists of a financial-accounts database of 1 million records. The corresponding natural language queries are designed to address various practical intricacies of the accounting domain. BookSQL has 100k Query-SQL pairs which is about 1.25 times the existing largest Text-2-SQL dataset: WikiSQL. In particular, for designing the queries, we consulted financial experts to understand various practical use cases. We also plan to create a leaderboard where researchers can benchmark various Text-to-SQL models for the accounting domain. 
 
     **Dataset** | **\#Size** | **#DB** | **#D** | **#T/DB** | **Domain** | **ORDER BY** | **GROUP BY** | **NESTED**
     |------|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -28,7 +28,7 @@ Our contributions can be summarized as below:
 
 ## License
 
-[![License: CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" width="120" height="50"></a>
 
 The BookSQL dataset follows [CC-BY-NC-SA](CC-BY-NC-SA) license. Thus, users can share and adapt our dataset if they give credit to us and do not use our dataset for any commercial purposes.
 
