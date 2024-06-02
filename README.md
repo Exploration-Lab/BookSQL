@@ -4,6 +4,8 @@ BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain (Paper: [Will U
 The repository contains the full codebase of experiments and results of the NAACL 2024 paper "BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain". 
 
 You can get BookSQL dataset from this link [https://github.com/Exploration-Lab/BookSQL/tree/main/DATA](https://github.com/Exploration-Lab/BookSQL/tree/main/DATA).
+
+
 **NOTE:** We are not releasing the Gold SQL queries for the test set as we are maintaining a [Leaderboard](https://huggingface.co/spaces/Exploration-Lab/BookSQL-Leaderboard) where a user can upload the predictions of their model and evaluate. 
 
 
