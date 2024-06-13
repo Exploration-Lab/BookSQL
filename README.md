@@ -1,5 +1,5 @@
 # BookSQL : A Large Scale Text-to-SQL Dataset for Accounting Domain
-BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain (Paper: [Will Update Soon]('#))
+BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain ([Paper](https://arxiv.org/abs/2406.07860))
 
 The repository contains the full codebase of experiments and results of the NAACL 2024 paper "BookSQL: A Large Scale Text-to-SQL Dataset for Accounting Domain". 
 
